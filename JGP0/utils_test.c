@@ -1,5 +1,5 @@
 /*
-* util.hÀÇ ÀÏºÎ ÇÔ¼ö Å×½ºÆ® ÆÄÀÏ
+* utils.hì˜ ì¼ë¶€ í•¨ìˆ˜ í…ŒìŠ¤íŠ¸ íŒŒì¼
 */
 
 #include <stdio.h>
@@ -22,7 +22,7 @@ char PATH_INVALID_REL[] = ".\\!";
 char PATH_PWD_REL[] =".";
 char PATH_PARENT_REL[] = "..";
 
-//´Ù¸¥ ÄÄÇ»ÅÍ¿¡¼­ Å×½ºÆ®½Ã °æ·Î ¼öÁ¤
+//ë‹¤ë¥¸ ì»´í“¨í„°ì—ì„œ í…ŒìŠ¤íŠ¸ì‹œ ê²½ë¡œ ìˆ˜ì •
 char PATH_TEST_DIR[]="C:\\Users\\dojh9\\test";
 char PATH_TEST_SUBDIR[] = "C:\\Users\\dojh9\\test\\subtestfolder";
 char PATH_TEST_SUBFILE1[] = "C:\\Users\\dojh9\\test\\test1.txt";
@@ -37,10 +37,10 @@ int main(void){
 
 	/*
 		cd(char* arg)
-		ÇÁ·Î±×·¥ÀÇ ÇöÁ¦°æ·Î¸¦ arg·Î º¯°æ.
-		¿À·ù¹ß»ı½Ã 1 ¹İÈ¯
+		í”„ë¡œê·¸ë¨ì˜ í˜„ì œê²½ë¡œë¥¼ argë¡œ ë³€ê²½.
+		ì˜¤ë¥˜ë°œìƒì‹œ 1 ë°˜í™˜
 	*/
-	//TODO : subprocess °æ·Î Ã¼Å©, directory °ª È®ÀÎ
+	//TODO : subprocess ê²½ë¡œ ì²´í¬, directory ê°’ í™•ì¸
 	printf("----- cd -----\n");
 	char STR_AAA_AAA[] = "AAA AAA";
 	massert(cd(STR_EMPTY) == 1);
@@ -52,47 +52,47 @@ int main(void){
 
 	/*
 		isPathValid(char*)
-		À¯È¿ÇÑ °æ·ÎÀÎ°¡¸¦ ÆÇ´Ü
-		À¯È¿ÇÑ °æ¿ì 1, ¾Æ´Ñ°æ¿ì 0 ¹İÈ¯
+		ìœ íš¨í•œ ê²½ë¡œì¸ê°€ë¥¼ íŒë‹¨
+		ìœ íš¨í•œ ê²½ìš° 1, ì•„ë‹Œê²½ìš° 0 ë°˜í™˜
 	*/
 	printf("----- isPathValid(char*) -----\n");
-	massert(isPathValid(PATH_PWD_REL) == 1); // »ó´ë°æ·Î·Î ÇöÀç°æ·Î
-	massert(isPathValid(PATH_PARENT_REL) == 1);  // »ó´ë°æ·Î·Î »óÀ§°æ·Î
-	massert(isPathValid(PATH_C) == 1); // Cµå¶óÀÌºê °æ·Î
-	massert(isPathValid(PATH_INVALID_ABS) == 0); //À¯È¿ÇÏÁö ¾ÊÀº °æ·Î
-	massert(isPathValid(PATH_INVALID_REL) == 0); //À¯È¿ÇÏÁö ¾ÊÀº °æ·Î
-	massert(isPathValid(STR_EMPTY) == 0); //ºó ¹®ÀÚ¿­
-	massert(isPathValid(PATH_TEST_DIR) == 1); //Àı´ë°æ·Î Æú´õ
-	massert(isPathValid(PATH_TEST_SUBDIR) == 1); //»ó´ë°æ·Î Æú´õ
-	massert(isPathValid(PATH_TEST_SUBFILE1) == 1); //Àı´ë°æ·Î ÆÄÀÏ
-	massert(isPathValid(PATH_TEST_SUBFILE1_REL) == 1); //»ó´ë°æ·Î ÆÄÀÏ
+	massert(isPathValid(PATH_PWD_REL) == 1); // ìƒëŒ€ê²½ë¡œë¡œ í˜„ì¬ê²½ë¡œ
+	massert(isPathValid(PATH_PARENT_REL) == 1);  // ìƒëŒ€ê²½ë¡œë¡œ ìƒìœ„ê²½ë¡œ
+	massert(isPathValid(PATH_C) == 1); // Cë“œë¼ì´ë¸Œ ê²½ë¡œ
+	massert(isPathValid(PATH_INVALID_ABS) == 0); //ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ë¡œ
+	massert(isPathValid(PATH_INVALID_REL) == 0); //ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ë¡œ
+	massert(isPathValid(STR_EMPTY) == 0); //ë¹ˆ ë¬¸ìì—´
+	massert(isPathValid(PATH_TEST_DIR) == 1); //ì ˆëŒ€ê²½ë¡œ í´ë”
+	massert(isPathValid(PATH_TEST_SUBDIR) == 1); //ìƒëŒ€ê²½ë¡œ í´ë”
+	massert(isPathValid(PATH_TEST_SUBFILE1) == 1); //ì ˆëŒ€ê²½ë¡œ íŒŒì¼
+	massert(isPathValid(PATH_TEST_SUBFILE1_REL) == 1); //ìƒëŒ€ê²½ë¡œ íŒŒì¼
 	printf("PASSED\n\n");
 
 	/*
 		isDir(char *path)
-		°æ·Î°¡ µğ·ºÅä¸®ÀÎ°¡?
-		µğ·ºÅä¸® ÀÏ°æ¿ì 0ÀÌ ¾Æ´Ñ °ª, ¾Æ´Ñ°æ¿ì 0 ¹İÈ¯
+		ê²½ë¡œê°€ ë””ë ‰í† ë¦¬ì¸ê°€?
+		ë””ë ‰í† ë¦¬ ì¼ê²½ìš° 0ì´ ì•„ë‹Œ ê°’, ì•„ë‹Œê²½ìš° 0 ë°˜í™˜
 	*/
 	printf("----- isDir(char *path) -----\n");
-	massert(isDir(".") != 0); // »ó´ë°æ·Î·Î ÇöÀç°æ·Î
-	massert(isDir("..") != 0);  // »ó´ë°æ·Î·Î »óÀ§°æ·Î
-	massert(isDir(PATH_C) != 0); // Cµå¶óÀÌºê °æ·Î
-	massert(isDir(PATH_INVALID_ABS) == 0); //À¯È¿ÇÏÁö ¾ÊÀº °æ·Î
-	massert(isDir(PATH_INVALID_REL) == 0); //À¯È¿ÇÏÁö ¾ÊÀº °æ·Î
-	massert(isDir(STR_EMPTY) == 0); //ºó ¹®ÀÚ¿­
-	massert(isDir(PATH_TEST_DIR) != 0); //Àı´ë°æ·Î Æú´õ
-	massert(isDir(PATH_TEST_SUBDIR) != 0); //»ó´ë°æ·Î Æú´õ
-	massert(isDir(PATH_TEST_SUBFILE1) == 0); //Àı´ë°æ·Î ÆÄÀÏ
-	massert(isDir(PATH_TEST_SUBFILE1_REL) == 0); //»ó´ë°æ·Î ÆÄÀÏ
+	massert(isDir(".") != 0); // ìƒëŒ€ê²½ë¡œë¡œ í˜„ì¬ê²½ë¡œ
+	massert(isDir("..") != 0);  // ìƒëŒ€ê²½ë¡œë¡œ ìƒìœ„ê²½ë¡œ
+	massert(isDir(PATH_C) != 0); // Cë“œë¼ì´ë¸Œ ê²½ë¡œ
+	massert(isDir(PATH_INVALID_ABS) == 0); //ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ë¡œ
+	massert(isDir(PATH_INVALID_REL) == 0); //ìœ íš¨í•˜ì§€ ì•Šì€ ê²½ë¡œ
+	massert(isDir(STR_EMPTY) == 0); //ë¹ˆ ë¬¸ìì—´
+	massert(isDir(PATH_TEST_DIR) != 0); //ì ˆëŒ€ê²½ë¡œ í´ë”
+	massert(isDir(PATH_TEST_SUBDIR) != 0); //ìƒëŒ€ê²½ë¡œ í´ë”
+	massert(isDir(PATH_TEST_SUBFILE1) == 0); //ì ˆëŒ€ê²½ë¡œ íŒŒì¼
+	massert(isDir(PATH_TEST_SUBFILE1_REL) == 0); //ìƒëŒ€ê²½ë¡œ íŒŒì¼
 
 	printf("PASSED\n\n");
 
 	/*
 		getFullPath(char* partialPath, char* dest);
-		»ó´ë°æ·Î¸¦ Àı´ë°æ·Î·Î º¯È¯ÇØÁØ´Ù.
-		¿À·ù°¡ ¾øÀ» ¶§ 0 ¹İÈ¯ , ¿À·ù¹ß»ı½Ã 1 ¹İÈ¯
+		ìƒëŒ€ê²½ë¡œë¥¼ ì ˆëŒ€ê²½ë¡œë¡œ ë³€í™˜í•´ì¤€ë‹¤.
+		ì˜¤ë¥˜ê°€ ì—†ì„ ë•Œ 0 ë°˜í™˜ , ì˜¤ë¥˜ë°œìƒì‹œ 1 ë°˜í™˜
 
-		´Ü, ÀÔ·ÂµÈ partialPath°¡ ÀÌ¹Ì Àı´ë°æ·ÎÀÎ°æ¿ì ±× Àı´ë°æ·Î¸¦ ±×´ë·Î Ãâ·Â
+		ë‹¨, ì…ë ¥ëœ partialPathê°€ ì´ë¯¸ ì ˆëŒ€ê²½ë¡œì¸ê²½ìš° ê·¸ ì ˆëŒ€ê²½ë¡œë¥¼ ê·¸ëŒ€ë¡œ ì¶œë ¥
 	*/
 
 	printf("----- getFullPath(char* partialPath, char* dest) -----\n");
@@ -127,8 +127,8 @@ int main(void){
 
 	/*
 		isCommandExist(char* command)
-		command Á¸ÀçÇÒ ¶§ CMD°´Ã¼ÀÇ ÁÖ¼Ò¸¦ ¹İÈ¯ÇÔ
-		Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì 0 ¹İÈ¯
+		command ì¡´ì¬í•  ë•Œ CMDê°ì²´ì˜ ì£¼ì†Œë¥¼ ë°˜í™˜í•¨
+		ì¡´ì¬í•˜ì§€ ì•Šì„ê²½ìš° 0 ë°˜í™˜
 	*/
 	printf("-----isCommandExist(char* command) -----\n");
 	char STR_CMD_INV[] = "NOCOMMAND";
@@ -152,10 +152,10 @@ int main(void){
 
 	/*
 		char** getCommandWithArg(char* buffer);
-		¸í·É¾î¿Í ÀÎÀÚ·Î ±¸ºĞÇÔ.
+		ëª…ë ¹ì–´ì™€ ì¸ìë¡œ êµ¬ë¶„í•¨.
 
 		freeCommandWithArg(char ** cmd_arg);
-		getCommandWithArg ¿¡¼­ »ı¼ºÇÑ ¹è¿­ ÇØÁ¦
+		getCommandWithArg ì—ì„œ ìƒì„±í•œ ë°°ì—´ í•´ì œ
 
 	*/
 	printf("----- getCommandWithArg(char* buffer) & freeCommandWithArg(char ** cmd_arg) -----\n");
@@ -177,19 +177,19 @@ int main(void){
 	*/
 	
 	printf("----- ls -----\n");
-	massert(ls("") == 0); // ºó ¹®ÀÚ¿­
-	massert(ls(".") == 0);	//»ó´ë°æ·Î with dot
-	massert(ls("..") == 0);	//»ó´ë°æ·Î with dot
-	massert(ls(".\\subtestfolder") == 0); //»ó´ë°æ·Î Æú´õ with dot
-	massert(ls(".\\nopath") == 1); //Á¸ÀçÇÏÁö ¾Ê´Â °æ·Î with dot
-	massert(ls(".\\test1.txt") == 0); //»ó´ë°æ·Î ÆÄÀÏ with dot
-	massert(ls("subtestfolder") == 0); //»ó´ë°æ·Î Æú´õ without dot
-	massert(ls("nopath") == 1); //Á¸ÀçÇÏÁö ¾Ê´Â °æ·Î without dot
-	massert(ls("test1.txt") == 0); //»ó´ë°æ·Î ÆÄÀÏ without dot
-	massert(ls("¿öµåÆÄÀÏ1.docx") == 0); //»ó´ë°æ·Î ÆÄÀÏ without dot
-	massert(ls("C:\\Users\\dojh9\\test") == 0); //Àı´ë°æ·Î Æú´õ
-	massert(ls("C:\\Users\\dojh9\\test\\test1.txt") == 0); //Àı´ë°æ·Î ÆÄÀÏ
-	massert(ls("C:\\Users\\dojh9\\test\\nopath") == 1); //Àı´ë°æ·Î Á¸ÀçÇÏÁö ¾Ê´Â °æ·Î
+	massert(ls("") == 0); // ë¹ˆ ë¬¸ìì—´
+	massert(ls(".") == 0);	//ìƒëŒ€ê²½ë¡œ with dot
+	massert(ls("..") == 0);	//ìƒëŒ€ê²½ë¡œ with dot
+	massert(ls(".\\subtestfolder") == 0); //ìƒëŒ€ê²½ë¡œ í´ë” with dot
+	massert(ls(".\\nopath") == 1); //ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ë¡œ with dot
+	massert(ls(".\\test1.txt") == 0); //ìƒëŒ€ê²½ë¡œ íŒŒì¼ with dot
+	massert(ls("subtestfolder") == 0); //ìƒëŒ€ê²½ë¡œ í´ë” without dot
+	massert(ls("nopath") == 1); //ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ë¡œ without dot
+	massert(ls("test1.txt") == 0); //ìƒëŒ€ê²½ë¡œ íŒŒì¼ without dot
+	massert(ls("ì›Œë“œíŒŒì¼1.docx") == 0); //ìƒëŒ€ê²½ë¡œ íŒŒì¼ without dot
+	massert(ls("C:\\Users\\dojh9\\test") == 0); //ì ˆëŒ€ê²½ë¡œ í´ë”
+	massert(ls("C:\\Users\\dojh9\\test\\test1.txt") == 0); //ì ˆëŒ€ê²½ë¡œ íŒŒì¼
+	massert(ls("C:\\Users\\dojh9\\test\\nopath") == 1); //ì ˆëŒ€ê²½ë¡œ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ë¡œ
 
 
 	massert(ls("*") == 0); //wildcard
@@ -199,28 +199,28 @@ int main(void){
 	massert(ls("test*") == 0); //wildcard back
 	massert(ls("t*t") == 0); //wildcard mid
 	massert(ls("t*.*t") == 0); //two wildcard
-	massert(ls("test.aaa*aa") == 1); // wildcard , °æ·Î ¾øÀ½
-	massert(ls("¿ö*ÆÄ*")==0); //wildcard with korean
-	massert(ls("C:\\Users\\dojh9\\test\\t*t") == 0); //wild card Àı´ë°æ·Î
+	massert(ls("test.aaa*aa") == 1); // wildcard , ê²½ë¡œ ì—†ìŒ
+	massert(ls("ì›Œ*íŒŒ*")==0); //wildcard with korean
+	massert(ls("C:\\Users\\dojh9\\test\\t*t") == 0); //wild card ì ˆëŒ€ê²½ë¡œ
 
 	char ls_op_l[] = "test* -l";
-	massert(ls(ls_op_l) ==0); //¿É¼Ç l
+	massert(ls(ls_op_l) ==0); //ì˜µì…˜ l
 	char ls_op_t[] = "test* -t";
-	massert(ls(ls_op_t) == 0); //¿É¼Ç t
+	massert(ls(ls_op_t) == 0); //ì˜µì…˜ t
 	char ls_op_s[] = "test* -s";
-	massert(ls(ls_op_s) == 0); //¿É¼Ç s
+	massert(ls(ls_op_s) == 0); //ì˜µì…˜ s
 	char ls_op_r[] = "test* -r";
-	massert(ls(ls_op_r) == 0); //¿É¼Ç r
+	massert(ls(ls_op_r) == 0); //ì˜µì…˜ r
 	char ls_op_l_r_t[] = "test* -l -r -t";
-	massert(ls(ls_op_l_r_t) == 0); //¿É¼Ç l r t
+	massert(ls(ls_op_l_r_t) == 0); //ì˜µì…˜ l r t
 	char ls_op_lt[] = "test* -lt";
-	massert(ls(ls_op_lt) == 0); //¿É¼Ç lt
+	massert(ls(ls_op_lt) == 0); //ì˜µì…˜ lt
 	char ls_op_ls[] = "test* -ls";
-	massert(ls(ls_op_ls) == 0); //¿É¼Ç ls
+	massert(ls(ls_op_ls) == 0); //ì˜µì…˜ ls
 	char ls_op_ts[] = "test* -ts";
-	massert(ls(ls_op_ts) == 1); //¿É¼Ç ts
+	massert(ls(ls_op_ts) == 1); //ì˜µì…˜ ts
 	char ls_op_llllssssr[] = "test* -llllssssr";
-	massert(ls(ls_op_llllssssr) == 0); //¿É¼Ç llllssssr
+	massert(ls(ls_op_llllssssr) == 0); //ì˜µì…˜ llllssssr
 
 	printf("PASSED\n\n");
 
